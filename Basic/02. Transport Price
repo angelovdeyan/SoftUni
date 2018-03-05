@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+
+namespace _04
+{
+    class Exercise04
+    {
+        static void Main(string[] args)
+        {
+            int km = int.Parse(Console.ReadLine());
+            string dayTime = Console.ReadLine().ToLower();
+            if (km< 0 && 5000 < km)
+            {
+                return;
+
+            }
+            double taxiOffer = TaxiRate(km, dayTime);
+            double busOffer = double.MaxValue;
+            if (km > 19)
+            {
+                busOffer = BusRate(km, dayTime);
+
+            }
+            double trainOffer = double.MaxValue;
+            if (km > 99)
+            {
+                trainOffer = TrainRate(km, dayTime);
+
+            }
+
+            double bill = Math.Min(taxiOffer, Math.Min(busOffer, trainOffer));
+
+            Console.WriteLine($"{bill:F2}");
+
+            
+        }
+
+        static double TaxiRate(int km, string dayTime)
+        {
+            double rate = 0;
+            
+            if (dayTime == "day")
+            {
+                rate = 0.79;
+            }
+            else
+            {
+                rate = 0.9;
+            }
+            double bill = 0.7 + km*rate;
+
+            return bill;
+        }
+
+        static double BusRate(int km, string dayTime)
+        {
+            
+            double rate = 0.09;
+            
+            double bill = km * rate;
+            
+            
+            return bill;
+        }
+
+        static double TrainRate(int km, string dayTime)
+        {
+            
+            double rate = 0.06;
+            
+            double bill = km * rate;
+
+            return bill;
+        }
+    }
+}
