@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+
+namespace _04
+{
+    class Exercise04
+    {
+        static void Main(string[] args)
+        {
+            double w = double.Parse(Console.ReadLine());
+            double h = double.Parse(Console.ReadLine());
+
+            int rows = (int)((w * 100) / 120); 
+            int columns = (int)(((h * 100) - 100 )/ 70);
+
+            int workStations = rows * columns - 3;
+            Console.WriteLine(workStations);
+        }
+    }
+}
