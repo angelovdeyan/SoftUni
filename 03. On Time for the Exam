@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+
+namespace _04
+{
+    class Exercise04
+    {
+        static void Main(string[] args)
+        {
+            int startHour = int.Parse(Console.ReadLine());
+            int startMinute = int.Parse(Console.ReadLine());
+            int arrivalHour = int.Parse(Console.ReadLine());
+            int arrivalMinute = int.Parse(Console.ReadLine());
+
+            startMinute += startHour * 60;
+            arrivalMinute += arrivalHour * 60;
+            int differenceMinutes = startMinute - arrivalMinute;
+            int differenceHours = 0;
+            if (differenceMinutes<0)
+            {
+                differenceMinutes = - differenceMinutes;
+                Console.WriteLine("Late");
+                if (differenceMinutes< 60)
+                {
+                    Console.WriteLine($"{differenceMinutes} minutes after the start");
+                }
+                else
+                {
+                    differenceHours = differenceMinutes / 60;
+                    differenceMinutes = differenceMinutes - (differenceHours*60);
+
+                    if (differenceHours > 23)
+                    {
+                        differenceHours = differenceHours - 24;
+                    }
+                    Console.WriteLine($"{differenceHours}:{differenceMinutes:D2} hours after the start");
+
+                }
+            }
+            else if (differenceMinutes == 0)
+            {
+                Console.WriteLine("On time");
+            }
+            else if (differenceMinutes > 0)
+            {
+                if (differenceMinutes <31)
+                {
+                    Console.WriteLine("On time");
+                    Console.WriteLine($"{differenceMinutes} minutes before the start");
+                }
+                else
+                {
+                    Console.WriteLine("Early");
+                }
+
+                if (differenceMinutes <60)
+                {
+                    Console.WriteLine($"{differenceMinutes} minutes before the start");
+
+                }
+                else if (differenceMinutes>59)
+                {
+                    differenceHours = differenceMinutes / 60;
+                    differenceMinutes = differenceMinutes - (differenceHours * 60);
+
+                    if (differenceHours > 23)
+                    {
+                        differenceHours = differenceHours - 24;
+                    }
+                    Console.WriteLine($"{differenceHours}:{differenceMinutes:D2} hours before the start");
+
+                }
+            }
+        }
+    }
+}
