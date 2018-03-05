@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+
+namespace _04
+{
+    class Exercise04
+    {
+        static void Main(string[] args)
+        {
+            int count = int.Parse(Console.ReadLine());
+
+            double percentPerNumber = (double)100 / (double)count;
+
+            double p1 = 0;
+            double p2 = 0;
+            double p3 = 0;
+            double p4 = 0;
+            double p5 = 0;
+
+            for (int i = 0; i < count; i++)
+            {
+                int num = int.Parse(Console.ReadLine());
+
+                if (num < 200)
+                {
+                    p1 += percentPerNumber;
+                }
+                else if (num > 199 && num < 400)
+                {
+                    p2 += percentPerNumber;
+
+                }
+                else if (num > 399 && num < 600)
+                {
+                    p3 += percentPerNumber;
+
+                }
+                else if (num > 599 && num < 800)
+                {
+                    p4 += percentPerNumber;
+
+                }
+                else if (num > 799)
+                {
+                    p5 += percentPerNumber;
+
+                }
+            }
+
+            Console.WriteLine($"{p1:F2}%");
+            Console.WriteLine($"{p2:F2}%");
+            Console.WriteLine($"{p3:F2}%");
+            Console.WriteLine($"{p4:F2}%");
+            Console.WriteLine($"{p5:F2}%");
+        }
+    }
+}
